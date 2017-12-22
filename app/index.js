@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
-import {
-  Alert, Platform, StyleSheet, SectionList, ActivityIndicator,
-  TouchableHighlight, TouchableOpacity, TouchableNativeFeedback,
-  TouchableWithoutFeedback, View, ScrollView, FlatList, ListView, Button, ImageBackground,
-  Dimensions, Animated, LayoutAnimation, NativeModules
-} from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import { AppRegistry, Text, Image, MaskedViewIOS } from 'react-native';
 
 //import from Home.js/Profile.js
 import Home from './screens/Home';
 import Profile from './screens/Profile';
 
 
-export default class StackNavigationImageBackground extends Component {
+export default class HelloWorld extends Component {
   constructor(props) {
     super(props);
   }
@@ -24,55 +17,11 @@ export default class StackNavigationImageBackground extends Component {
   }
 }
 
-// class ProfileScreen extends React.Component {
-//   static navigationOptions = {
-//     title: 'Profile'
-//   };
-
-//   render() {
-//     return (
-//       <View style={{ flex: 1 }}>
-//         <View style={ styles.imageContainer } >
-//           <Image
-//             source={require('../resource/kart1_price.jpg')}
-//             style={ styles.imageView }
-//           >
-//           </Image>
-//         </View>
-        
-//         <View style={{ flex: 2 }}>
-//           <Image
-//             source={require('../resource/d7.png')}
-//             style={ styles.imageView }
-//           >
-//           </Image>
-//         </View>
-//       </View>
-//     );
-//   }
-// }
-
-// const styles = StyleSheet.create({
-//   imageContainer: {
-//     flex: 1,
-//     backgroundColor: 'green'
-//   },
-//   imageView: {
-//     flex: 1,
-//     // remove width and height to override fixed static size
-//     width: null,
-//     height: null,
-//     resizeMode: 'contain'
-//   }
-// });
-
 // //IMPORTANT: this stack navigator must be defined after screens definition
 export const AppStack = StackNavigator({
   Home: { screen: Home },
   Profile: { screen: Profile }
 });
-
-AppRegistry.registerComponent('HelloWorld_native', () => AppStack);
 
 
 
