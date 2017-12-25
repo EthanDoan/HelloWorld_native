@@ -8,7 +8,7 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this._onBtnPress = this._onBtnPress.bind(this);
-
+    this._pushToImageList = this._pushToImageList.bind(this);
   }
 
   static navigationOptions = ({ navigation }) => ({
@@ -22,7 +22,7 @@ export default class HomeScreen extends React.Component {
       </TouchableOpacity>,
     headerLeft:
       <TouchableOpacity
-        onPress={() => navigation.navigate('Profile')} //neu tro ra func ben ngoai thi khong chay dc!?!?
+        onPress={() => navigation.navigate('ImageList')}
         style={styles.rightBarButton}
       >
         <Text style={styles.barButtonText}>Left</Text>
@@ -33,6 +33,10 @@ export default class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation;
     navigate('Profile', { name: 'Jane' });
   };
+
+  _pushToImageList() {
+    this.props.navigation('ImageList');
+  }
 
   render() {
     return (

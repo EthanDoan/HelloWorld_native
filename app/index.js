@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 //import from Home.js/Profile.js
 import Home from './screens/Home';
 import Profile from './screens/Profile';
+import ImageList from './screens/ImageList.js'
 
 
 export default class HelloWorld extends Component {
@@ -20,7 +21,8 @@ export default class HelloWorld extends Component {
 // //IMPORTANT: this stack navigator must be defined after screens definition
 export const AppStack = StackNavigator({
   Home: { screen: Home },
-  Profile: { screen: Profile }
+  Profile: { screen: Profile },
+  ImageList: { screen: ImageList }
 });
 
 
