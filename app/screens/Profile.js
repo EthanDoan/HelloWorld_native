@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, View, Button, Image, StyleSheet } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import * as sourceImage from '../constants/image';
+import * as imgs from '../constants/image';
 
 
 export default class ProfileScreen extends Component {
@@ -11,7 +11,6 @@ export default class ProfileScreen extends Component {
             switchImage: false
         };
         this._profileButtonPressed = this._profileButtonPressed.bind(this);
-
     }
 
     static navigationOptions = {
@@ -24,8 +23,8 @@ export default class ProfileScreen extends Component {
     };
 
     render() {
-        var image1 = IMAGES['image1'];
-        var image2 = IMAGES['image2'];
+        var image1 = imgs.SOURCE_IMAGES['image1'];
+        var image2 = imgs.SOURCE_IMAGES['image2'];
 
         if (this.state.switchImage) {
             var temp = image1;
@@ -60,11 +59,6 @@ export default class ProfileScreen extends Component {
             </View>
         );
     }
-}
-
-const IMAGES = {
-    image1: require('../../resource/d7.png'),
-    image2: require('../../resource/kart1_price.jpg')
 }
 
 const styles = StyleSheet.create({

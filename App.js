@@ -1,3 +1,3 @@
-import StackNavigationImageBackground from './app/index';
+import App from './app/index';
 
-export default StackNavigationImageBackground;
+export default App;
