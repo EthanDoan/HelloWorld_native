@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
+import { TabNavigator } from 'react-navigation';
 
-//import from Home.js/Profile.js
-import Home from './screens/Home';
-import Profile from './screens/Profile';
-import ImageList from './screens/ImageList.js'
+//import screens
+import Home from './screens/Home'
+import Profile from './screens/Profile'
+import ImageList from './screens/ImageList'
+import MainTabNavigator from './screens/MainTabNavigator'
 
 
 export default class HelloWorld extends Component {
@@ -20,12 +22,11 @@ export default class HelloWorld extends Component {
 
 // //IMPORTANT: this stack navigator must be defined after screens definition
 export const AppStack = StackNavigator({
+  MainScreen: { screen: MainTabNavigator },
   Home: { screen: Home },
   Profile: { screen: Profile },
   ImageList: { screen: ImageList }
 });
-
-
 
 
 

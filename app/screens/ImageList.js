@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, ListView, StatusBar } from 'react-native';
+import { View, Text, Image, StyleSheet, ListView, StatusBar, ActivityIndicator } from 'react-native';
 import { StackNavigator } from 'react-navigation'
 
 
@@ -12,39 +12,49 @@ export default class ImageList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataSource: new ListView.DataSource({rowHasChanged: (r1,r2) => r1!=r2}),
+            isLoading: true,
+            dataSource: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 }),
             link: 'http://hardeepcoder.com/laravel/easyshop/api/products'
         }
     }
 
     componentDidMount() {
         fetch(this.state.link)
-        .then((response) => response.json())
-        .then((responseJson) => {
-            data = responseJson;
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(data)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                data = responseJson;
+                this.setState({
+                    dataSource: this.state.dataSource.cloneWithRows(data),
+                    isLoading: false
+                })
             })
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     render() {
         const { params } = this.props.navigation.state;
-        return(
+        if (this.state.isLoading) {
+            return (
+                <View style={{flex: 1}}>
+                    <ActivityIndicator style={{flex: 1, justifyContent: 'center'}} />
+                </View>
+            );
+        }
+
+        return (
             <View style={styles.container}>
-                <ListView 
+                <ListView
                     dataSource={this.state.dataSource}
-                    renderRow={(rowData) => 
+                    renderRow={(rowData) =>
                         <View>
                             <Text style={styles.elementName}>
                                 {rowData.pro_name}
                             </Text>
                             <Image
-                                style={{width: '100%', height: 250}}
-                                source={{uri: rowData.pro_img}} 
+                                style={{ width: '100%', height: 250 }}
+                                source={{ uri: rowData.pro_img }}
                             />
                             <Text>
                                 Price: {rowData.pro_price} VND
