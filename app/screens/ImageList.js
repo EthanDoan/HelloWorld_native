@@ -34,7 +34,7 @@ export default class ImageList extends Component {
     }
 
     render() {
-        const { params } = this.props.navigation.state;
+        // const { params } = this.props.navigation.state;
         if (this.state.isLoading) {
             return (
                 <View style={{flex: 1}}>

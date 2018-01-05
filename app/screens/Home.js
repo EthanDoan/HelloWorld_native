@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
-import { AppRegistry, View, Button, Image, AlertIOS, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { AppRegistry, View, Button, Image, AlertIOS, 
+        TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 
 export default class HomeScreen extends React.Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Button, TouchableOpacity, Image, StyleSheet, Text, Dimensions } from 'react-native';
+import { View, Button, TouchableOpacity, Image, StyleSheet, Text, Dimensions, Platform } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 
 import TabFeed from './TabFeed'
@@ -10,7 +10,6 @@ import TabProfile from './TabProfile'
 import * as Icons from '../constants/icons'
 
 var width = Dimensions.get('window').width
-var menuIcon = Icons.SOURCE_ICON['icon_menu']
 
 export default class MainTabNavigator extends Component {
 
@@ -25,7 +24,7 @@ export default class MainTabNavigator extends Component {
                 <Image 
                     style={{ width: width/10, height: 24, resizeMode: 'contain' }}
                     resizeMode='contain'
-                    source={menuIcon}
+                    source={Icons.SOURCE_ICON['icon_menu']}
                 >
                 </Image>
             </TouchableOpacity>,
@@ -51,4 +50,31 @@ export const MainTabScreen = TabNavigator({
     TabSing: { screen: TabSing },
     TabNotification: { screen: TabNotification },
     TabProfile: { screen: TabProfile }
-});
+}, {
+    // headerMode: 'none',
+    tabBarPosition: 'bottom', // So your Android tabs go bottom
+    swipeEnabled: true,
+    tabBarOptions: {
+        // borderBottomWidth: 0,
+        activeTintColor: 'white',  // Color of tab when pressed
+        activeBackgroundColor: 'white',
+        inactiveTintColor: 'black', // Color of tab when not pressed
+        inactiveBackgroundColor: 'green',
+        showIcon: 'true', // Shows an icon for both iOS and Android
+        // showLabel: (Platform.OS !== 'android'), //No label for Android
+        labelStyle: {
+          fontSize: 12,
+          fontWeight: '600',
+        //   padding: 10
+        },
+        style: {
+        //   backgroundColor: '#fff', // Makes Android tab bar white instead of standard blue
+          height: (Platform.OS === 'ios') ? 48 : 54 // I didn't use this in my app, so the numbers may be off. 
+        },
+        indicatorStyle: {
+            backgroundColor: 'white',
+            height: 0
+        }
+      }
+}
+);
